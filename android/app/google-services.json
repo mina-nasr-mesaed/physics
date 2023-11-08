@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897857749416",
+    "project_id": "physics-education-56cac",
+    "storage_bucket": "physics-education-56cac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897857749416:android:8040f5e89d22f2d9621d9d",
+        "android_client_info": {
+          "package_name": "com.example.physics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF4f_a2rH9HDQHvId787uZ1vcOH8Ki7_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
