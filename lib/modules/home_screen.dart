@@ -1,5 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import '../Firebase/auth.dart';
 import 'bottom navgator_screens/home.dart';
 import 'bottom navgator_screens/profile_screen.dart';
 
@@ -17,6 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
     profile(),
     Home(),
   ];
+  final User ? user =Auth().currentUser;
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -23,30 +23,33 @@ class Level extends StatelessWidget {
                         color: Colors.grey[900],
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      child: Flex(
-                        direction: Axis.vertical,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
+                      child: InkWell(
+                        onTap: (){Navigator.of(context).pushReplacementNamed("pdf_list");},
+                        child: Flex(
+                          direction: Axis.vertical,
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
+                              ),
+                              child: Image.asset(
+                                'assets/ui/2.png',
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            child: Image.asset(
-                              'assets/ui/2.png',
-                              fit: BoxFit.cover,
+                            SizedBox(height: 10,),
+                            Text(
+                              'الفرقة الثانية',
+                              style: GoogleFonts.robotoCondensed(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 10,),
-                          Text(
-                            'الفرقة الثانية',
-                            style: GoogleFonts.robotoCondensed(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

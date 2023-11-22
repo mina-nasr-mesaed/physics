@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:physics/Firebase/tree.dart';
+import 'package:physics/modules/pdf_list.dart';
+import 'package:physics/modules/view_pdf.dart';
 import 'Firebase/auth.dart';
 import 'modules/home_screen.dart';
 import 'modules/level_Screen.dart';
@@ -8,7 +11,7 @@ import 'modules/login_screen.dart';
 import 'modules/signup_screen.dart';
 import 'modules/splash_screen.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -25,8 +28,6 @@ Future<FirebaseApp> _initializeFirebase() async {
   FirebaseApp firebaseApp =await Firebase.initializeApp();
   return firebaseApp;
 }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +47,15 @@ Future<FirebaseApp> _initializeFirebase() async {
           elevation: 0.0,
         ),
       ),
-      initialRoute: 'level',
+      initialRoute: '/',
       routes: {
         "/": (context) => SplashScreen(),
-        "auth": (context) => const Auth(),
-        "signupScreen": (context) => const SignUpscreen(),
-        "loginScreen": (context) => const LoginScreen(),
+        "tree": (context) => Tree(),
+        "loginScreen": (context) =>  LoginScreen(),
+        "signupScreen": (context) => SignUpscreen(),
         "homeScreen": (context) => HomeScreen(),
         "level": (context) =>Level(),
+        'pdf_list':(context) =>pdf_list(),
         //"form":(Context)=>Form1(),
       },
     );

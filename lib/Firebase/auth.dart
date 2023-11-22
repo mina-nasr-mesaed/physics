@@ -1,26 +1,31 @@
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import '../modules/home_screen.dart';
-import '../modules/login_screen.dart';
 
-
-class Auth extends StatelessWidget {
-  const Auth({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: ((context, snapshot) {
-          if (snapshot.hasData) {
-            return HomeScreen();
-          } else {
-            return LoginScreen();
-          }
-        }),
-      ),
+class Auth{
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  User ? get currentUser => _firebaseAuth.currentUser;
+  Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
+  Future<void> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  })async {
+    await _firebaseAuth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
     );
+  }
+
+  Future<void> createUserWithEmailAndPassword({
+    required String email,
+    required String password,
+  })async {
+    await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+  Future<void> signOut()async{
+    await _firebaseAuth.signOut();
   }
 }
