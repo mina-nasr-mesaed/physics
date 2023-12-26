@@ -8,13 +8,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class pdf_list extends StatefulWidget {
+class pdf1Student extends StatefulWidget {
 
   @override
-  State<pdf_list> createState() => _HomeState();
+  State<pdf1Student> createState() => _HomeState();
 }
 
-class _HomeState extends State<pdf_list> {
+class _HomeState extends State<pdf1Student> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   List<Map<String,dynamic>> pdfData = [];
 
@@ -25,6 +25,8 @@ class _HomeState extends State<pdf_list> {
     final downloadlink = await refrence.getDownloadURL();
     return downloadlink;
   }
+  @override
+
   void pickFile() async {
     final pickedFile = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -35,8 +37,7 @@ class _HomeState extends State<pdf_list> {
       String filename = pickedFile.files[0].name;
       File file = File(pickedFile.files[0].path!);
       final downloadlink =await uploadpdf(filename,file);
-
-      _firebaseFirestore.collection("pdfs").add({
+      _firebaseFirestore.collection("pdfs").doc('TlQZMKeOq6jTUDd9KMgk').collection('level1').add({
         "name":filename,
         "url":downloadlink,
       });
@@ -45,7 +46,7 @@ class _HomeState extends State<pdf_list> {
   }
 
   void getAllPdf()async{
-    final results =await _firebaseFirestore.collection("pdfs").where('level',isEqualTo: "2").get();
+    final results =await _firebaseFirestore.collection("pdfs").doc('TlQZMKeOq6jTUDd9KMgk').collection('level1').get();
     pdfData =results.docs.map((e) => e.data()).toList();
     setState(() {
 
@@ -85,10 +86,6 @@ class _HomeState extends State<pdf_list> {
             );
           }
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.upload_file),
-        onPressed: pickFile,
-      ),
     );
   }
 }
@@ -119,10 +116,10 @@ class _pdfViwerScreenState extends State<pdfViwerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: document !=null
-          ? PDFViewer(document: document!,
-      ):Center(child: CircularProgressIndicator(),
-      )
+        body: document !=null
+            ? PDFViewer(document: document!,
+        ):Center(child: CircularProgressIndicator(),
+        )
     );
   }
 }

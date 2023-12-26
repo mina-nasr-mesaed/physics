@@ -24,7 +24,7 @@ class Level extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: InkWell(
-                        onTap: (){Navigator.of(context).pushReplacementNamed("pdf_list");},
+                        onTap: (){Navigator.of(context).pushReplacementNamed("pdf1");},
                         child: Flex(
                           direction: Axis.vertical,
                           children: [

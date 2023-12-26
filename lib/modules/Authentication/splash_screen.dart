@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    NavigateToHome(context, 'tree');
+    NavigateToHome(context, 'auth');
     return Scaffold(
         body: Container(
           width: double.infinity,
@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
         ));
   }
   void NavigateToHome(BuildContext context, String ScreenName) {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, ScreenName);
     });
   } //NavigateToHome
