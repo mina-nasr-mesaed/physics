@@ -42,6 +42,10 @@ dependencies:
   firebase_storage: ^11.1.1
   easy_pdf_viewer: ^1.0.7
   file_picker: ^6.1.1
+  #flutter_downloader: ^1.11.5
+  #path_provider: ^2.1.1
+  #device_info_plus: ^9.1.1
+  #permission_handler: ^11.0.1
 
 dev_dependencies:
   flutter_test:

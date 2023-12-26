@@ -2,22 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../Firebase/auth.dart';
+import '../Authentication/login_screen.dart';
 
-class profile extends StatelessWidget {
-  final User ? user = Auth().currentUser;
+class profile2 extends StatelessWidget {
+  final user = FirebaseAuth.instance.currentUser!;
 
-  Future<void> signout() async {
-    await Auth().signOut();
-  }
 
   Widget _userId() {
-    return Text(user?.email ?? 'User email',style: TextStyle(
-      fontSize: 35,
-    ),);
-  }
-
-  Widget signOutButton() {
-    return ElevatedButton(onPressed: signout, child:const Text('Sign out'));
+    return Text('${user.email}',style: TextStyle(fontSize: 30,));
   }
 
   @override
@@ -32,11 +24,22 @@ class profile extends StatelessWidget {
             children: [
               _userId(),
               SizedBox(height: 40,),
-              signOutButton(),
+              ElevatedButton(onPressed: (){logout(context);}, child:const Text('Sign out')),
 
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    CircularProgressIndicator();
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginPage(),
       ),
     );
   }
